@@ -1,0 +1,12 @@
+// container
+
+.searchBox {
+    @include flexy($al: center, $just: center, $dir: column);
+}
+.imageGallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;  
+    color: #444;
+    margin-left: 60px;
+}

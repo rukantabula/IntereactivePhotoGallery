@@ -1,0 +1,25 @@
+// ======================================
+//  Variables
+// ======================================
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$font-stack-primary: "Roboto", sans-serif;
+$txt-tr-upper: uppercase;
+$txt-tr-none: none;
+
+//layout
+$max-width: 1000px;
+
+
+// Colors
+$white: #fff;
+$color-primary: #808080;
+$color-secondary: #58e1c1;
+
+// Breakpoints
+$breakpoints: (
+  "xs": 768px,
+  "sm": 769px
+);
+
