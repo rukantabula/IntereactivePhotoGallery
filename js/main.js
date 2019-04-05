@@ -2,62 +2,62 @@
     const imageData = [
         {
             name: '01.jpg',
-            category: 'Hay Bales',
+            title: 'Hay Bales',
             caption: 'I love hay bales. Took this snap on a drive through the countryside past some straw fields.'
         },
         {
             name: '02.jpg',
-            category: 'Lake',
+            title: 'Lake',
             caption: 'The lake was so calm today. We had a great view of the snow on the mountains from here.'
         },
         {
             name: '03.jpg',
-            category: 'Canyon',
+            title: 'Canyon',
             caption: 'I hiked to the top of the mountain and got this picture of the canyon and trees below.'
         },
         {
             name: '04.jpg',
-            category: 'Iceberg',
+            title: 'Iceberg',
             caption: 'It was amazing to see an iceberg up close, it was so cold but didn’t snow today. '
         },
         {
             name: '05.jpg',
-            category: 'Desert',
+            title: 'Desert',
             caption: 'The red cliffs were beautiful. It was really hot in the desert but we did a lot of walking through the canyons.'
         },
         {
             name: '06.jpg',
-            category: 'Fall',
+            title: 'Fall',
             caption: 'Fall is coming, I love when the leaves on the trees start to change color.'
         },
         {
             name: '07.jpg',
-            category: 'Plantation',
+            title: 'Plantation',
             caption: 'I drove past this plantation yesterday, everything is so green!'
         },
         {
             name: '08.jpg',
-            category: 'Dunes',
+            title: 'Dunes',
             caption: 'My summer vacation to the Oregon Coast. I love the sandy dunes!'
         },
         {
             name: '09.jpg',
-            category: 'Countryside Lane',
+            title: 'Countryside Lane',
             caption: 'We enjoyed a quiet stroll down this countryside lane. '
         },
         {
             name: '10.jpg',
-            category: 'Sunset',
+            title: 'Sunset',
             caption: 'Sunset at the coast! The sky turned a lovely shade of orange.'
         },
         {
             name: '11.jpg',
-            category: 'Cave',
+            title: 'Cave',
             caption: 'I did a tour of a cave today and the view of the landscape below was breathtaking.'
         },
         {
             name: '12.jpg',
-            category: 'Bluebells',
+            title: 'Bluebells',
             caption: 'I walked through this meadow of bluebells and got a good view of the snow on the mountain before the fog came in.'
         }
     ];
@@ -65,37 +65,53 @@
 const $searchBox = '<input class="searchInput" type="text"  placeholder="Search(16pt)">';
 $('.searchBox').append($searchBox);
 
-//insertImages(imageData) 
+insertImages(imageData);
 
 $('.searchInput').on('input',function(){
-    var newImageList = [];
-    const value = $('.searchInput').val();
-
-    
+    let newImageList = [];
+    let value = $('.searchInput').val().toLowerCase();
+    let caption;
+    let title;
 
     for(var i = 0; i < imageData.length; i++ ){
+     caption = imageData[i].caption.toLowerCase()
+     title = imageData[i].title.toLowerCase()
       
-        if(imageData[i].caption.indexOf(value) !== -1 || imageData[i].caption.indexOf(value) !== -1){
+        if(caption.indexOf(value) !== -1 || title.indexOf(value) !== -1){
             newImageList.push(imageData[i]);
-            console.log(imageData[i].caption);
-            
-            insertImages(newImageList);
-           
+            insertImages(newImageList);          
         }
     }
   });
 
 
 function insertImages(images) {
-    console.log(images);
-
     $('.imageGallery').text('');
+    $('.imageSlideShow').text('');
 
     for(var i = 0; i < images.length; i++){
         if (images.length !== 0){
-            $('.imageGallery').append(`<img src="photos/thumbnails/${images[i].name}" alt="${images[i].name}, ${images[i].category}"> <p>${images[i].category}</p><p>${images[i].caption}</p>`);
+            $('.imageGallery').append(`<img src="photos/thumbnails/${images[i].name}" alt="${images[i].name}, ${images[i].title}"> `);
+            $('.imageSlideShow').append(`<img src="photos/${images[i].name}" alt="${images[i].name}, ${images[i].title}"> `);
+            $('.imageSlideShow').hide();
         }
-       
     }
 }
 
+/*
+$('.imageGallery').on('click', function(){
+    $('.imageSlideShow').show();
+    $('.imageSlideShow').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear'
+      });
+})
+
+$('.imageSlideShow').on('click', function(){
+    $('.imageSlideShow').hide();
+    $('.imageSlideShow').unslick();
+})
+*/

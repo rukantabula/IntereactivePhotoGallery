@@ -314,6 +314,9 @@ ul {
 p {
   margin-bottom: 1.25em; }
 
+.container {
+  position: relative; }
+
 .searchBox {
   display: flex;
   flex-direction: column;
@@ -326,6 +329,16 @@ p {
   justify-content: center;
   color: #444;
   margin-left: 60px; }
+
+.imageSlideShow {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  height: 50%;
+  width: 60%; }
+
+.imageSlideShow {
+  z-index: 1000; }
 
 .searchInput {
   background: rgba(255, 255, 255, 0.1);

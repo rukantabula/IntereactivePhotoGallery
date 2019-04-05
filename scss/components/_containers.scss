@@ -1,5 +1,9 @@
 // container
 
+.container {
+    position: relative;
+}
+
 .searchBox {
     @include flexy($al: center, $just: center, $dir: column);
 }
@@ -9,4 +13,16 @@
     justify-content: center;  
     color: #444;
     margin-left: 60px;
+}
+
+.imageSlideShow{
+    position: absolute;
+    top: 25%; 
+    left: 20%;
+    height: 50%;
+    width: 60%;
+}
+
+.imageSlideShow{
+    z-index: 1000;
 }
