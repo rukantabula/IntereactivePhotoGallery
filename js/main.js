@@ -62,12 +62,12 @@
         }
     ];
 
-const $searchBox = '<input class="searchInput" type="text"  placeholder="Search(16pt)">';
+const $searchBox = '<input class="searchInput"  id="search-gallery" type="text"  placeholder="Search(16pt)">';
 $('.searchBox').append($searchBox);
 
 insertImages(imageData);
 
-$('.searchInput').on('input',function(){
+$('.searchInput').on('input', function(){
     let newImageList = [];
     let value = $('.searchInput').val().toLowerCase();
     let caption;
@@ -77,7 +77,7 @@ $('.searchInput').on('input',function(){
      caption = imageData[i].caption.toLowerCase()
      title = imageData[i].title.toLowerCase()
       
-        if(caption.indexOf(value) !== -1 || title.indexOf(value) !== -1){
+        if(caption.indexOf(value) > -1 || title.indexOf(value) > -1){
             newImageList.push(imageData[i]);
             insertImages(newImageList);          
         }
@@ -86,32 +86,11 @@ $('.searchInput').on('input',function(){
 
 
 function insertImages(images) {
-    $('.imageGallery').text('');
-    $('.imageSlideShow').text('');
-
+    $('.gallery').text('');
     for(var i = 0; i < images.length; i++){
         if (images.length !== 0){
-            $('.imageGallery').append(`<img src="photos/thumbnails/${images[i].name}" alt="${images[i].name}, ${images[i].title}"> `);
-            $('.imageSlideShow').append(`<img src="photos/${images[i].name}" alt="${images[i].name}, ${images[i].title}"> `);
-            $('.imageSlideShow').hide();
+             $('.gallery')
+             .append(`<div class="slideShow"><a href="photos/${images[i].name}" data-lightbox="gallery"  data-name="${images[i].title}" data-title="${images[i].caption}"><img src="photos/thumbnails/${images[i].name}" alt="${images[i].title}"></a></div> `);
         }
     }
 }
-
-/*
-$('.imageGallery').on('click', function(){
-    $('.imageSlideShow').show();
-    $('.imageSlideShow').slick({
-        dots: true,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        cssEase: 'linear'
-      });
-})
-
-$('.imageSlideShow').on('click', function(){
-    $('.imageSlideShow').hide();
-    $('.imageSlideShow').unslick();
-})
-*/
