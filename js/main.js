@@ -79,7 +79,7 @@ $('.searchInput').on('input', function(){
       
         if(caption.indexOf(value) > -1 || title.indexOf(value) > -1){
             newImageList.push(imageData[i]);
-           // insertImages(newImageList);  
+           //git insertImages(newImageList);  
                   
         }
         
