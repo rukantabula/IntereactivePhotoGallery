@@ -62,7 +62,7 @@
         }
     ];
 
-const $searchBox = '<input class="searchInput"  id="search-gallery" type="text"  placeholder="Search(16pt)">';
+const $searchBox = '<input class="searchInput" max="500"  id="search-gallery" type="text"  placeholder="Search(16pt)">';
 $('.searchBox').append($searchBox);
 
 insertImages(imageData);
@@ -79,9 +79,13 @@ $('.searchInput').on('input', function(){
       
         if(caption.indexOf(value) > -1 || title.indexOf(value) > -1){
             newImageList.push(imageData[i]);
-            insertImages(newImageList);          
+           // insertImages(newImageList);  
+                  
         }
+        
     }
+    insertImages(newImageList); 
+    console.log(`input value: ${value}`); 
   });
 
 
